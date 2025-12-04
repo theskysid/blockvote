@@ -1,0 +1,1060 @@
+nohup: ignoring input
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--------------------< [0;36mcom.blockvote:voting-system[0;1m >---------------------[m
+[[1;34mINFO[m] [1mBuilding BlockVOTE 1.0.0[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m>>> [0;32mspring-boot-maven-plugin:3.2.0:run[m [1m(default-cli)[0;1m > [0;1mtest-compile[m @ [36mvoting-system[0;1m >>>[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mvoting-system[0;1m ---[m
+[[1;34mINFO[m] Copying 1 resource from src/main/resources to target/classes
+[[1;34mINFO[m] Copying 0 resource from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:compile[m [1m(default-compile)[m @ [36mvoting-system[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mvoting-system[0;1m ---[m
+[[1;34mINFO[m] skip non existing resourceDirectory /home/theskysid/Desktop/BlockVOTE/backend/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.11.0:testCompile[m [1m(default-testCompile)[m @ [36mvoting-system[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m<<< [0;32mspring-boot-maven-plugin:3.2.0:run[m [1m(default-cli)[0;1m < [0;1mtest-compile[m @ [36mvoting-system[0;1m <<<[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mspring-boot-maven-plugin:3.2.0:run[m [1m(default-cli)[m @ [36mvoting-system[0;1m ---[m
+[[1;34mINFO[m] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-27T15:53:19.632+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Starting BlockVoteApplication using Java 21.0.8 with PID 17263 (/home/theskysid/Desktop/BlockVOTE/backend/target/classes started by theskysid in /home/theskysid/Desktop/BlockVOTE/backend)
+2025-11-27T15:53:19.634+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-27T15:53:19.667+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-27T15:53:19.667+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-27T15:53:20.065+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-27T15:53:20.125+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50 ms. Found 4 JPA repository interfaces.
+2025-11-27T15:53:20.443+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-27T15:53:20.449+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-27T15:53:20.450+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-27T15:53:20.471+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-27T15:53:20.471+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 804 ms
+2025-11-27T15:53:20.492+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-11-27T15:53:20.604+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:blockvote user=SA
+2025-11-27T15:53:20.605+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-11-27T15:53:20.612+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:blockvote'
+2025-11-27T15:53:20.686+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-27T15:53:20.722+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.3.1.Final
+2025-11-27T15:53:20.740+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-27T15:53:20.864+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-27T15:53:20.889+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-27T15:53:21.338+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+Hibernate: 
+    create table candidates (
+        vote_count integer not null,
+        id bigint generated by default as identity,
+        name varchar(255) not null,
+        party varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table elections (
+        created_at timestamp(6) not null,
+        id bigint generated by default as identity,
+        started_at timestamp(6),
+        stopped_at timestamp(6),
+        status varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table users (
+        has_voted boolean not null,
+        id bigint generated by default as identity,
+        mobile_number varchar(255) not null unique,
+        role varchar(255) not null,
+        wallet_address varchar(255) not null unique,
+        primary key (id)
+    )
+Hibernate: 
+    create table votes (
+        candidate_id bigint not null,
+        id bigint generated by default as identity,
+        voted_at timestamp(6) not null,
+        voter_mobile varchar(255) not null,
+        wallet_address varchar(255) not null,
+        primary key (id)
+    )
+2025-11-27T15:53:21.363+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T15:53:21.641+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-27T15:53:21.833+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-27T15:53:21.849+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-27T15:53:21.854+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Started BlockVoteApplication in 2.463 seconds (process running for 2.706)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.has_voted,
+        u1_0.mobile_number,
+        u1_0.role,
+        u1_0.wallet_address 
+    from
+        users u1_0
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+========================================
+Sample Users Initialized:
+Admin - Mobile: 9999999999, OTP: 123456
+Voter 1 - Mobile: 8888888888, OTP: 123456
+Voter 2 - Mobile: 7777777777, OTP: 123456
+Voter 3 - Mobile: 6666666666, OTP: 123456
+========================================
+2025-11-27T15:56:17.174+05:30  INFO 17263 --- [BlockVOTE] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-27T15:56:17.175+05:30  INFO 17263 --- [BlockVOTE] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-11-27T15:56:17.176+05:30  INFO 17263 --- [BlockVOTE] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+Hibernate: 
+    select
+        c1_0.id,
+        c1_0.name,
+        c1_0.party,
+        c1_0.vote_count 
+    from
+        candidates c1_0
+Hibernate: 
+    select
+        e1_0.id,
+        e1_0.created_at,
+        e1_0.started_at,
+        e1_0.status,
+        e1_0.stopped_at 
+    from
+        elections e1_0 
+    order by
+        e1_0.created_at desc 
+    fetch
+        first ? rows only
+2025-11-27T15:56:18.396+05:30  INFO 17263 --- [BlockVOTE] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (1 addition, 0 deletions, 1 modification)
+2025-11-27T15:56:18.404+05:30  INFO 17263 --- [BlockVOTE] [       Thread-5] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+2025-11-27T15:56:18.411+05:30  WARN 17263 --- [BlockVOTE] [       Thread-5] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-11-27T15:56:18.412+05:30  INFO 17263 --- [BlockVOTE] [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-11-27T15:56:18.414+05:30  INFO 17263 --- [BlockVOTE] [       Thread-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-27T15:56:18.511+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Starting BlockVoteApplication using Java 21.0.8 with PID 17263 (/home/theskysid/Desktop/BlockVOTE/backend/target/classes started by theskysid in /home/theskysid/Desktop/BlockVOTE/backend)
+2025-11-27T15:56:18.511+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-27T15:56:18.698+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-27T15:56:18.715+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 16 ms. Found 4 JPA repository interfaces.
+2025-11-27T15:56:19.002+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-27T15:56:19.003+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-27T15:56:19.004+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-27T15:56:19.017+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-27T15:56:19.018+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 504 ms
+2025-11-27T15:56:19.065+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Starting...
+2025-11-27T15:56:19.070+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-2 - Added connection conn10: url=jdbc:h2:mem:blockvote user=SA
+2025-11-27T15:56:19.070+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Start completed.
+2025-11-27T15:56:19.071+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:blockvote'
+2025-11-27T15:56:19.144+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-27T15:56:19.148+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-27T15:56:19.151+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-27T15:56:19.153+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-27T15:56:19.300+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+Hibernate: 
+    create table candidates (
+        vote_count integer not null,
+        id bigint generated by default as identity,
+        name varchar(255) not null,
+        party varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table elections (
+        created_at timestamp(6) not null,
+        id bigint generated by default as identity,
+        started_at timestamp(6),
+        stopped_at timestamp(6),
+        status varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table users (
+        has_voted boolean not null,
+        id bigint generated by default as identity,
+        mobile_number varchar(255) not null unique,
+        role varchar(255) not null,
+        wallet_address varchar(255) not null unique,
+        primary key (id)
+    )
+Hibernate: 
+    create table votes (
+        candidate_id bigint not null,
+        id bigint generated by default as identity,
+        voted_at timestamp(6) not null,
+        voter_mobile varchar(255) not null,
+        wallet_address varchar(255) not null,
+        primary key (id)
+    )
+2025-11-27T15:56:19.316+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T15:56:19.602+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-27T15:56:19.838+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-27T15:56:19.854+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-27T15:56:19.859+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Started BlockVoteApplication in 1.375 seconds (process running for 180.71)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.has_voted,
+        u1_0.mobile_number,
+        u1_0.role,
+        u1_0.wallet_address 
+    from
+        users u1_0
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+========================================
+Sample Users Initialized:
+Admin - Mobile: 9999999999, OTP: 123456
+Voter 1 - Mobile: 8888888888, OTP: 123456
+Voter 2 - Mobile: 7777777777, OTP: 123456
+Voter 3 - Mobile: 6666666666, OTP: 123456
+========================================
+2025-11-27T15:56:19.886+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-11-27T15:56:48.259+05:30  INFO 17263 --- [BlockVOTE] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2025-11-27T15:56:48.261+05:30  INFO 17263 --- [BlockVOTE] [       Thread-7] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+2025-11-27T15:56:48.263+05:30  WARN 17263 --- [BlockVOTE] [       Thread-7] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-11-27T15:56:48.263+05:30  INFO 17263 --- [BlockVOTE] [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown initiated...
+2025-11-27T15:56:48.264+05:30  INFO 17263 --- [BlockVOTE] [       Thread-7] com.zaxxer.hikari.HikariDataSource       : HikariPool-2 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-27T15:56:48.314+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Starting BlockVoteApplication using Java 21.0.8 with PID 17263 (/home/theskysid/Desktop/BlockVOTE/backend/target/classes started by theskysid in /home/theskysid/Desktop/BlockVOTE/backend)
+2025-11-27T15:56:48.314+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-27T15:56:48.390+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-27T15:56:48.395+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 5 ms. Found 4 JPA repository interfaces.
+2025-11-27T15:56:48.451+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-27T15:56:48.452+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-27T15:56:48.452+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-27T15:56:48.456+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-27T15:56:48.457+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 142 ms
+2025-11-27T15:56:48.468+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Starting...
+2025-11-27T15:56:48.470+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-3 - Added connection conn20: url=jdbc:h2:mem:blockvote user=SA
+2025-11-27T15:56:48.470+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Start completed.
+2025-11-27T15:56:48.470+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:blockvote'
+2025-11-27T15:56:48.486+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-27T15:56:48.487+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-27T15:56:48.488+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-27T15:56:48.489+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-27T15:56:48.528+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+Hibernate: 
+    create table candidates (
+        vote_count integer not null,
+        id bigint generated by default as identity,
+        name varchar(255) not null,
+        party varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table elections (
+        created_at timestamp(6) not null,
+        id bigint generated by default as identity,
+        started_at timestamp(6),
+        stopped_at timestamp(6),
+        status varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table users (
+        has_voted boolean not null,
+        id bigint generated by default as identity,
+        mobile_number varchar(255) not null unique,
+        role varchar(255) not null,
+        wallet_address varchar(255) not null unique,
+        primary key (id)
+    )
+Hibernate: 
+    create table votes (
+        candidate_id bigint not null,
+        id bigint generated by default as identity,
+        voted_at timestamp(6) not null,
+        voter_mobile varchar(255) not null,
+        wallet_address varchar(255) not null,
+        primary key (id)
+    )
+2025-11-27T15:56:48.532+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T15:56:48.692+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-27T15:56:48.788+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-27T15:56:48.796+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-27T15:56:48.798+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Started BlockVoteApplication in 0.498 seconds (process running for 209.65)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.has_voted,
+        u1_0.mobile_number,
+        u1_0.role,
+        u1_0.wallet_address 
+    from
+        users u1_0
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+========================================
+Sample Users Initialized:
+Admin - Mobile: 9999999999, OTP: 123456
+Voter 1 - Mobile: 8888888888, OTP: 123456
+Voter 2 - Mobile: 7777777777, OTP: 123456
+Voter 3 - Mobile: 6666666666, OTP: 123456
+========================================
+2025-11-27T15:56:48.811+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-11-27T16:00:32.373+05:30  INFO 17263 --- [BlockVOTE] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-11-27T16:00:32.376+05:30  INFO 17263 --- [BlockVOTE] [      Thread-12] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+2025-11-27T16:00:32.378+05:30  WARN 17263 --- [BlockVOTE] [      Thread-12] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-11-27T16:00:32.379+05:30  INFO 17263 --- [BlockVOTE] [      Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2025-11-27T16:00:32.379+05:30  INFO 17263 --- [BlockVOTE] [      Thread-12] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-27T16:00:32.420+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Starting BlockVoteApplication using Java 21.0.8 with PID 17263 (/home/theskysid/Desktop/BlockVOTE/backend/target/classes started by theskysid in /home/theskysid/Desktop/BlockVOTE/backend)
+2025-11-27T16:00:32.420+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-27T16:00:32.490+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-27T16:00:32.495+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 4 JPA repository interfaces.
+2025-11-27T16:00:32.551+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-27T16:00:32.552+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-27T16:00:32.552+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-27T16:00:32.556+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-27T16:00:32.556+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 135 ms
+2025-11-27T16:00:32.567+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2025-11-27T16:00:32.568+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection conn30: url=jdbc:h2:mem:blockvote user=SA
+2025-11-27T16:00:32.568+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2025-11-27T16:00:32.569+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:blockvote'
+2025-11-27T16:00:32.588+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-27T16:00:32.589+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-27T16:00:32.590+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-27T16:00:32.591+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-27T16:00:32.622+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+Hibernate: 
+    create table candidates (
+        vote_count integer not null,
+        id bigint generated by default as identity,
+        name varchar(255) not null,
+        party varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table elections (
+        created_at timestamp(6) not null,
+        id bigint generated by default as identity,
+        started_at timestamp(6),
+        stopped_at timestamp(6),
+        status varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table users (
+        has_voted boolean not null,
+        id bigint generated by default as identity,
+        mobile_number varchar(255) not null unique,
+        role varchar(255) not null,
+        wallet_address varchar(255) not null unique,
+        primary key (id)
+    )
+Hibernate: 
+    create table votes (
+        candidate_id bigint not null,
+        id bigint generated by default as identity,
+        voted_at timestamp(6) not null,
+        voter_mobile varchar(255) not null,
+        wallet_address varchar(255) not null,
+        primary key (id)
+    )
+2025-11-27T16:00:32.626+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T16:00:32.724+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-27T16:00:32.783+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-27T16:00:32.788+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-27T16:00:32.790+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Started BlockVoteApplication in 0.384 seconds (process running for 433.641)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.has_voted,
+        u1_0.mobile_number,
+        u1_0.role,
+        u1_0.wallet_address 
+    from
+        users u1_0
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+========================================
+Sample Users Initialized:
+Admin - Mobile: 9999999999, OTP: 123456
+Voter 1 - Mobile: 8888888888, OTP: 123456
+Voter 2 - Mobile: 7777777777, OTP: 123456
+Voter 3 - Mobile: 6666666666, OTP: 123456
+========================================
+2025-11-27T16:00:32.800+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-11-27T16:01:12.219+05:30  INFO 17263 --- [BlockVOTE] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2025-11-27T16:01:12.222+05:30  INFO 17263 --- [BlockVOTE] [      Thread-16] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+2025-11-27T16:01:12.224+05:30  WARN 17263 --- [BlockVOTE] [      Thread-16] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-11-27T16:01:12.225+05:30  INFO 17263 --- [BlockVOTE] [      Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2025-11-27T16:01:12.225+05:30  INFO 17263 --- [BlockVOTE] [      Thread-16] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-27T16:01:12.286+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Starting BlockVoteApplication using Java 21.0.8 with PID 17263 (/home/theskysid/Desktop/BlockVOTE/backend/target/classes started by theskysid in /home/theskysid/Desktop/BlockVOTE/backend)
+2025-11-27T16:01:12.286+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-27T16:01:12.359+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-27T16:01:12.364+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 4 JPA repository interfaces.
+2025-11-27T16:01:12.413+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-27T16:01:12.413+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-27T16:01:12.413+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-27T16:01:12.418+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-27T16:01:12.418+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 131 ms
+2025-11-27T16:01:12.430+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Starting...
+2025-11-27T16:01:12.432+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-5 - Added connection conn40: url=jdbc:h2:mem:blockvote user=SA
+2025-11-27T16:01:12.432+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Start completed.
+2025-11-27T16:01:12.432+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:blockvote'
+2025-11-27T16:01:12.451+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-27T16:01:12.453+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-27T16:01:12.454+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-27T16:01:12.454+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-27T16:01:12.487+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+Hibernate: 
+    create table candidates (
+        vote_count integer not null,
+        id bigint generated by default as identity,
+        name varchar(255) not null,
+        party varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table elections (
+        created_at timestamp(6) not null,
+        id bigint generated by default as identity,
+        started_at timestamp(6),
+        stopped_at timestamp(6),
+        status varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table users (
+        has_voted boolean not null,
+        id bigint generated by default as identity,
+        mobile_number varchar(255) not null unique,
+        role varchar(255) not null,
+        wallet_address varchar(255) not null unique,
+        primary key (id)
+    )
+Hibernate: 
+    create table votes (
+        candidate_id bigint not null,
+        id bigint generated by default as identity,
+        voted_at timestamp(6) not null,
+        voter_mobile varchar(255) not null,
+        wallet_address varchar(255) not null,
+        primary key (id)
+    )
+2025-11-27T16:01:12.490+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T16:01:12.583+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-27T16:01:12.629+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-27T16:01:12.634+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-27T16:01:12.636+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Started BlockVoteApplication in 0.37 seconds (process running for 473.487)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.has_voted,
+        u1_0.mobile_number,
+        u1_0.role,
+        u1_0.wallet_address 
+    from
+        users u1_0
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+========================================
+Sample Users Initialized:
+Admin - Mobile: 9999999999, OTP: 123456
+Voter 1 - Mobile: 8888888888, OTP: 123456
+Voter 2 - Mobile: 7777777777, OTP: 123456
+Voter 3 - Mobile: 6666666666, OTP: 123456
+========================================
+2025-11-27T16:01:12.643+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-11-27T16:03:07.184+05:30  INFO 17263 --- [BlockVOTE] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 24 class path changes (0 additions, 23 deletions, 1 modification)
+2025-11-27T16:03:07.191+05:30  INFO 17263 --- [BlockVOTE] [      Thread-20] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+2025-11-27T16:03:07.194+05:30  WARN 17263 --- [BlockVOTE] [      Thread-20] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-11-27T16:03:07.195+05:30  INFO 17263 --- [BlockVOTE] [      Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown initiated...
+2025-11-27T16:03:07.195+05:30  INFO 17263 --- [BlockVOTE] [      Thread-20] com.zaxxer.hikari.HikariDataSource       : HikariPool-5 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-27T16:03:07.295+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Starting BlockVoteApplication using Java 21.0.8 with PID 17263 (/home/theskysid/Desktop/BlockVOTE/backend/target/classes started by theskysid in /home/theskysid/Desktop/BlockVOTE/backend)
+2025-11-27T16:03:07.295+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-27T16:03:07.410+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-27T16:03:07.411+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 JPA repository interfaces.
+2025-11-27T16:03:07.483+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-27T16:03:07.484+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-27T16:03:07.484+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-27T16:03:07.489+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-27T16:03:07.490+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 194 ms
+2025-11-27T16:03:07.504+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Starting...
+2025-11-27T16:03:07.505+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-6 - Added connection conn50: url=jdbc:h2:mem:blockvote user=SA
+2025-11-27T16:03:07.506+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Start completed.
+2025-11-27T16:03:07.506+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:blockvote'
+2025-11-27T16:03:07.522+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-27T16:03:07.523+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-27T16:03:07.524+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-27T16:03:07.524+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-27T16:03:07.528+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-27T16:03:07.528+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T16:03:07.546+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-27T16:03:07.613+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-27T16:03:07.618+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-27T16:03:07.620+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Started BlockVoteApplication in 0.347 seconds (process running for 588.472)
+2025-11-27T16:03:07.621+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-11-27T16:03:56.032+05:30  INFO 17263 --- [BlockVOTE] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-11-27T16:03:56.036+05:30  INFO 17263 --- [BlockVOTE] [      Thread-24] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T16:03:56.037+05:30  WARN 17263 --- [BlockVOTE] [      Thread-24] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-11-27T16:03:56.037+05:30  INFO 17263 --- [BlockVOTE] [      Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown initiated...
+2025-11-27T16:03:56.038+05:30  INFO 17263 --- [BlockVOTE] [      Thread-24] com.zaxxer.hikari.HikariDataSource       : HikariPool-6 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-27T16:03:56.125+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Starting BlockVoteApplication using Java 21.0.8 with PID 17263 (/home/theskysid/Desktop/BlockVOTE/backend/target/classes started by theskysid in /home/theskysid/Desktop/BlockVOTE/backend)
+2025-11-27T16:03:56.126+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-27T16:03:56.249+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-27T16:03:56.250+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 JPA repository interfaces.
+2025-11-27T16:03:56.342+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-27T16:03:56.343+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-27T16:03:56.343+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-27T16:03:56.351+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-27T16:03:56.352+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 225 ms
+2025-11-27T16:03:56.371+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Starting...
+2025-11-27T16:03:56.374+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-7 - Added connection conn60: url=jdbc:h2:mem:blockvote user=SA
+2025-11-27T16:03:56.374+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Start completed.
+2025-11-27T16:03:56.374+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:blockvote'
+2025-11-27T16:03:56.400+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-27T16:03:56.402+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-27T16:03:56.404+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-27T16:03:56.405+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-27T16:03:56.411+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-27T16:03:56.411+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T16:03:56.442+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-27T16:03:56.601+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-27T16:03:56.612+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-27T16:03:56.616+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Started BlockVoteApplication in 0.513 seconds (process running for 637.468)
+2025-11-27T16:03:56.618+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-11-27T16:03:58.404+05:30  INFO 17263 --- [BlockVOTE] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 23 class path changes (23 additions, 0 deletions, 0 modifications)
+2025-11-27T16:03:58.407+05:30  INFO 17263 --- [BlockVOTE] [      Thread-28] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T16:03:58.407+05:30  WARN 17263 --- [BlockVOTE] [      Thread-28] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-11-27T16:03:58.408+05:30  INFO 17263 --- [BlockVOTE] [      Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown initiated...
+2025-11-27T16:03:58.408+05:30  INFO 17263 --- [BlockVOTE] [      Thread-28] com.zaxxer.hikari.HikariDataSource       : HikariPool-7 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-27T16:03:58.510+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Starting BlockVoteApplication using Java 21.0.8 with PID 17263 (/home/theskysid/Desktop/BlockVOTE/backend/target/classes started by theskysid in /home/theskysid/Desktop/BlockVOTE/backend)
+2025-11-27T16:03:58.511+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-27T16:03:58.686+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-27T16:03:58.694+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 4 JPA repository interfaces.
+2025-11-27T16:03:58.785+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-27T16:03:58.785+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-27T16:03:58.785+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-27T16:03:58.794+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-27T16:03:58.794+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 281 ms
+2025-11-27T16:03:58.820+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Starting...
+2025-11-27T16:03:58.822+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-8 - Added connection conn70: url=jdbc:h2:mem:blockvote user=SA
+2025-11-27T16:03:58.822+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Start completed.
+2025-11-27T16:03:58.822+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:blockvote'
+2025-11-27T16:03:58.840+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-27T16:03:58.841+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-27T16:03:58.842+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-27T16:03:58.843+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-27T16:03:58.878+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+Hibernate: 
+    create table candidates (
+        vote_count integer not null,
+        id bigint generated by default as identity,
+        name varchar(255) not null,
+        party varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table elections (
+        created_at timestamp(6) not null,
+        id bigint generated by default as identity,
+        started_at timestamp(6),
+        stopped_at timestamp(6),
+        status varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table users (
+        has_voted boolean not null,
+        id bigint generated by default as identity,
+        mobile_number varchar(255) not null unique,
+        role varchar(255) not null,
+        wallet_address varchar(255) not null unique,
+        primary key (id)
+    )
+Hibernate: 
+    create table votes (
+        candidate_id bigint not null,
+        id bigint generated by default as identity,
+        voted_at timestamp(6) not null,
+        voter_mobile varchar(255) not null,
+        wallet_address varchar(255) not null,
+        primary key (id)
+    )
+2025-11-27T16:03:58.881+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T16:03:58.985+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-27T16:03:59.038+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-27T16:03:59.043+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-27T16:03:59.045+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Started BlockVoteApplication in 0.569 seconds (process running for 639.896)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.has_voted,
+        u1_0.mobile_number,
+        u1_0.role,
+        u1_0.wallet_address 
+    from
+        users u1_0
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+========================================
+Sample Users Initialized:
+Admin - Mobile: 9999999999, OTP: 123456
+Voter 1 - Mobile: 8888888888, OTP: 123456
+Voter 2 - Mobile: 7777777777, OTP: 123456
+Voter 3 - Mobile: 6666666666, OTP: 123456
+========================================
+2025-11-27T16:03:59.054+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2025-11-27T16:04:22.463+05:30  INFO 17263 --- [BlockVOTE] [   File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-11-27T16:04:22.474+05:30  INFO 17263 --- [BlockVOTE] [      Thread-32] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+2025-11-27T16:04:22.477+05:30  WARN 17263 --- [BlockVOTE] [      Thread-32] o.s.b.f.support.DisposableBeanAdapter    : Invocation of destroy method failed on bean with name 'inMemoryDatabaseShutdownExecutor': org.h2.jdbc.JdbcSQLNonTransientConnectionException: Database is already closed (to disable automatic closing at VM shutdown, add ";DB_CLOSE_ON_EXIT=FALSE" to the db URL) [90121-224]
+2025-11-27T16:04:22.477+05:30  INFO 17263 --- [BlockVOTE] [      Thread-32] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown initiated...
+2025-11-27T16:04:22.479+05:30  INFO 17263 --- [BlockVOTE] [      Thread-32] com.zaxxer.hikari.HikariDataSource       : HikariPool-8 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-11-27T16:04:22.616+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Starting BlockVoteApplication using Java 21.0.8 with PID 17263 (/home/theskysid/Desktop/BlockVOTE/backend/target/classes started by theskysid in /home/theskysid/Desktop/BlockVOTE/backend)
+2025-11-27T16:04:22.617+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : No active profile set, falling back to 1 default profile: "default"
+2025-11-27T16:04:22.777+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-27T16:04:22.790+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 12 ms. Found 4 JPA repository interfaces.
+2025-11-27T16:04:22.877+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-11-27T16:04:22.877+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-11-27T16:04:22.877+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.16]
+2025-11-27T16:04:22.881+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-11-27T16:04:22.881+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 261 ms
+2025-11-27T16:04:22.895+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Starting...
+2025-11-27T16:04:22.897+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.pool.HikariPool        : HikariPool-9 - Added connection conn80: url=jdbc:h2:mem:blockvote user=SA
+2025-11-27T16:04:22.897+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-9 - Start completed.
+2025-11-27T16:04:22.897+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.a.h2.H2ConsoleAutoConfiguration    : H2 console available at '/h2-console'. Database available at 'jdbc:h2:mem:blockvote'
+2025-11-27T16:04:22.914+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-27T16:04:22.915+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-11-27T16:04:22.917+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-27T16:04:22.917+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] org.hibernate.orm.deprecation            : HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-11-27T16:04:22.963+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+Hibernate: 
+    drop table if exists candidates cascade 
+Hibernate: 
+    drop table if exists elections cascade 
+Hibernate: 
+    drop table if exists users cascade 
+Hibernate: 
+    drop table if exists votes cascade 
+Hibernate: 
+    create table candidates (
+        vote_count integer not null,
+        id bigint generated by default as identity,
+        name varchar(255) not null,
+        party varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table elections (
+        created_at timestamp(6) not null,
+        id bigint generated by default as identity,
+        started_at timestamp(6),
+        stopped_at timestamp(6),
+        status varchar(255) not null,
+        primary key (id)
+    )
+Hibernate: 
+    create table users (
+        has_voted boolean not null,
+        id bigint generated by default as identity,
+        mobile_number varchar(255) not null unique,
+        role varchar(255) not null,
+        wallet_address varchar(255) not null unique,
+        primary key (id)
+    )
+Hibernate: 
+    create table votes (
+        candidate_id bigint not null,
+        id bigint generated by default as identity,
+        voted_at timestamp(6) not null,
+        voter_mobile varchar(255) not null,
+        wallet_address varchar(255) not null,
+        primary key (id)
+    )
+2025-11-27T16:04:22.967+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-27T16:04:23.242+05:30  WARN 17263 --- [BlockVOTE] [  restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-27T16:04:23.389+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2025-11-27T16:04:23.404+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2025-11-27T16:04:23.407+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] com.blockvote.BlockVoteApplication       : Started BlockVoteApplication in 0.82 seconds (process running for 664.258)
+Hibernate: 
+    select
+        u1_0.id,
+        u1_0.has_voted,
+        u1_0.mobile_number,
+        u1_0.role,
+        u1_0.wallet_address 
+    from
+        users u1_0
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+Hibernate: 
+    insert 
+    into
+        users
+        (has_voted, mobile_number, role, wallet_address, id) 
+    values
+        (?, ?, ?, ?, default)
+========================================
+Sample Users Initialized:
+Admin - Mobile: 9999999999, OTP: 123456
+Voter 1 - Mobile: 8888888888, OTP: 123456
+Voter 2 - Mobile: 7777777777, OTP: 123456
+Voter 3 - Mobile: 6666666666, OTP: 123456
+========================================
+2025-11-27T16:04:23.419+05:30  INFO 17263 --- [BlockVOTE] [  restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;31mBUILD FAILURE[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  11:37 min
+[[1;34mINFO[m] Finished at: 2025-11-27T16:04:56+05:30
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;31mERROR[m] Failed to execute goal [32morg.springframework.boot:spring-boot-maven-plugin:3.2.0:run[m [1m(default-cli)[m on project [36mvoting-system[m: [1;31mProcess terminated with exit code: 137[m -> [1m[Help 1][m
+[[1;31mERROR[m] 
+[[1;31mERROR[m] To see the full stack trace of the errors, re-run Maven with the [1m-e[m switch.
+[[1;31mERROR[m] Re-run Maven using the [1m-X[m switch to enable full debug logging.
+[[1;31mERROR[m] 
+[[1;31mERROR[m] For more information about the errors and possible solutions, please read the following articles:
+[[1;31mERROR[m] [1m[Help 1][m http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
