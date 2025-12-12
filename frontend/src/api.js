@@ -10,8 +10,8 @@ const api = axios.create({
 });
 
 export const authAPI = {
-  login: (mobileNumber, otp) =>
-    api.post('/auth/login', { mobileNumber, otp }),
+  login: (mobileNumber, otp, walletAddress = null) =>
+    api.post('/auth/login', { mobileNumber, otp, walletAddress }),
   register: (mobileNumber, walletAddress) =>
     api.post('/auth/register', { mobileNumber, walletAddress }),
   // Wallet verification endpoints
@@ -22,13 +22,19 @@ export const authAPI = {
 };
 
 export const adminAPI = {
-  createElection: () => api.post('/admin/create-election'),
+  createElection: (title) => api.post('/admin/create-election', { title }),
   addCandidate: (name, party) =>
     api.post('/admin/add-candidate', { name, party }),
   startElection: () => api.post('/admin/start-election'),
   stopElection: () => api.post('/admin/stop-election'),
   getResults: () => api.get('/admin/results'),
   getElectionStatus: () => api.get('/admin/election-status'),
+  getCurrentCandidates: () => api.get('/admin/candidates'),
+  resetElection: () => api.post('/admin/reset-election'),
+  // Archive endpoints
+  getArchivedElections: () => api.get('/admin/archive'),
+  getArchivedElection: (id) => api.get(`/admin/archive/${id}`),
+  getElectionStatistics: (id) => api.get(`/admin/archive/${id}/statistics`),
 };
 
 export const voterAPI = {

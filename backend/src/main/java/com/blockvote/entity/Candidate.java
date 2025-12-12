@@ -1,5 +1,6 @@
 package com.blockvote.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,4 +25,16 @@ public class Candidate {
 
     @Column(nullable = false)
     private Integer voteCount = 0;
+
+    // Link to specific election
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "election_id")
+    @JsonBackReference
+    private Election election;
+
+    @Column(name = "election_id", insertable = false, updatable = false)
+    private Long electionId;
+
+    @Column(nullable = false)
+    private Boolean isActive = true; // Whether this candidate is active in current election
 }

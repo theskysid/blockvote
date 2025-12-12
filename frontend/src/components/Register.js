@@ -10,13 +10,7 @@ function Register() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const generateWalletAddress = () => {
-    // Generate a random wallet address (simulated)
-    const randomHex = Array.from({ length: 40 }, () => 
-      Math.floor(Math.random() * 16).toString(16)
-    ).join('');
-    setWalletAddress('0x' + randomHex.toUpperCase());
-  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -81,26 +75,15 @@ function Register() {
 
           <div className="form-group">
             <label>Wallet Address *</label>
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <input
-                type="text"
-                value={walletAddress}
-                onChange={(e) => setWalletAddress(e.target.value)}
-                placeholder="Enter wallet address or generate"
-                required
-                style={{ flex: 1 }}
-              />
-              <button
-                type="button"
-                onClick={generateWalletAddress}
-                className="btn btn-secondary"
-                style={{ whiteSpace: 'nowrap' }}
-              >
-                Generate
-              </button>
-            </div>
+            <input
+              type="text"
+              value={walletAddress}
+              onChange={(e) => setWalletAddress(e.target.value)}
+              placeholder="Enter your MetaMask wallet address"
+              required
+            />
             <small style={{ color: '#718096', fontSize: '12px' }}>
-              Simulated wallet address (e.g., 0xABC123...)
+              Enter your actual MetaMask wallet address (e.g., 0xABC123...)
             </small>
           </div>
 

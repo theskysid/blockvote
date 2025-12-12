@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { adminAPI } from '../api';
+import BlockchainActivityFeed from './BlockchainActivityFeed';
+import BlockchainConsole from './BlockchainConsole';
 
 function AdminDashboard() {
   const [user, setUser] = useState(null);
+  const [electionTitle, setElectionTitle] = useState('');
   const [candidateName, setCandidateName] = useState('');
   const [candidateParty, setCandidateParty] = useState('');
   const [results, setResults] = useState(null);
@@ -11,6 +14,10 @@ function AdminDashboard() {
   const [message, setMessage] = useState({ type: '', text: '' });
   const [loading, setLoading] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
+  const [consoleCollapsed, setConsoleCollapsed] = useState(false);
+  const [archivedElections, setArchivedElections] = useState([]);
+  const [selectedArchive, setSelectedArchive] = useState(null);
+  const [archiveStatistics, setArchiveStatistics] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -70,6 +77,13 @@ function AdminDashboard() {
     return () => clearInterval(interval);
   }, [navigate]);
 
+  // Load archived elections when archive tab is selected
+  useEffect(() => {
+    if (activeTab === 'archive') {
+      loadArchivedElections();
+    }
+  }, [activeTab]);
+
   const loadElectionStatus = async () => {
     try {
       const response = await adminAPI.getElectionStatus();
@@ -92,17 +106,51 @@ function AdminDashboard() {
     }
   };
 
+  const loadArchivedElections = async () => {
+    try {
+      const response = await adminAPI.getArchivedElections();
+      if (response.data.success) {
+        setArchivedElections(response.data.data);
+      }
+    } catch (err) {
+      console.error('Failed to load archived elections');
+      setMessage({ type: 'error', text: 'Failed to load archived elections' });
+    }
+  };
+
+  const loadElectionStatistics = async (electionId) => {
+    try {
+      setLoading(true);
+      const response = await adminAPI.getElectionStatistics(electionId);
+      if (response.data.success) {
+        setArchiveStatistics(response.data.data);
+        setSelectedArchive(electionId);
+      }
+    } catch (err) {
+      console.error('Failed to load election statistics');
+      setMessage({ type: 'error', text: 'Failed to load election statistics' });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const showMessage = (type, text) => {
     setMessage({ type, text });
     setTimeout(() => setMessage({ type: '', text: '' }), 4000);
   };
 
   const handleCreateElection = async () => {
+    if (!electionTitle.trim()) {
+      showMessage('error', 'Please enter an election title');
+      return;
+    }
+    
     setLoading(true);
     try {
-      const response = await adminAPI.createElection();
+      const response = await adminAPI.createElection(electionTitle.trim());
       if (response.data.success) {
         showMessage('success', '✅ Election created successfully!');
+        setElectionTitle(''); // Clear the input
         loadElectionStatus();
       }
     } catch (err) {
@@ -161,10 +209,48 @@ function AdminDashboard() {
     }
   };
 
+  const handleResetElection = async () => {
+    if (!window.confirm('⚠️ This will reset the current election and remove all candidates. Are you sure?')) {
+      return;
+    }
+    
+    setLoading(true);
+    try {
+      const response = await adminAPI.resetElection();
+      if (response.data.success) {
+        showMessage('success', '🔄 Election reset successfully! Ready to add new candidates.');
+        setCandidateName('');
+        setCandidateParty('');
+        loadElectionStatus();
+        loadResults();
+      }
+    } catch (err) {
+      showMessage('error', err.response?.data?.message || 'Failed to reset election');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const loadCurrentCandidates = async () => {
+    try {
+      const response = await adminAPI.getCurrentCandidates();
+      if (response.data.success) {
+        return response.data.data || [];
+      }
+    } catch (err) {
+      console.error('Error loading candidates:', err);
+    }
+    return [];
+  };
+
   const handleLogout = () => {
     localStorage.removeItem('user');
     sessionStorage.clear();
     navigate('/');
+  };
+
+  const handleConsoleToggle = () => {
+    setConsoleCollapsed(!consoleCollapsed);
   };
 
   if (!user) return null;
@@ -206,6 +292,12 @@ function AdminDashboard() {
             style={activeTab === 'results' ? {...styles.navButton, ...styles.navButtonActive} : styles.navButton}
           >
             📈 Live Results
+          </button>
+          <button
+            onClick={() => setActiveTab('archive')}
+            style={activeTab === 'archive' ? {...styles.navButton, ...styles.navButtonActive} : styles.navButton}
+          >
+            📚 Archive
           </button>
         </nav>
 
@@ -358,14 +450,51 @@ function AdminDashboard() {
                 </div>
               </div>
             )}
+
+            {/* Real-time blockchain vote activity feed */}
+            <BlockchainActivityFeed isAdmin={true} />
           </div>
         )}
 
         {/* Manage Tab */}
         {activeTab === 'manage' && (
-          <div>
-            <div style={styles.card}>
-              <h3 style={styles.cardTitle}>Election Controls</h3>
+          <div style={styles.twoColumnLayout}>
+            <div style={styles.mainColumn}>
+              <div style={styles.card}>
+              <h3 style={styles.cardTitle}>Fresh Election Management</h3>
+              
+              {/* Election Status Info */}
+              <div style={styles.statusInfo}>
+                <div style={styles.statusItem}>
+                  <span style={styles.statusLabel}>Current Status:</span>
+                  <span style={styles.statusBadge(electionStatus?.status || 'UNKNOWN')}>
+                    {electionStatus?.status || 'NO ELECTION'}
+                  </span>
+                </div>
+                <div style={styles.statusItem}>
+                  <span style={styles.statusLabel}>Candidates:</span>
+                  <span style={styles.statusValue}>{candidates.length}</span>
+                </div>
+              </div>
+
+              {/* Election Title Input */}
+              {(!electionStatus || electionStatus.status === 'STOPPED') && (
+                <div style={styles.inputSection}>
+                  <label style={styles.inputLabel}>Election Title:</label>
+                  <input
+                    type="text"
+                    value={electionTitle}
+                    onChange={(e) => setElectionTitle(e.target.value)}
+                    placeholder="e.g., Student Council Election 2025"
+                    style={styles.inputField}
+                    maxLength={100}
+                  />
+                  <small style={styles.inputHint}>
+                    Enter a descriptive name for your election (max 100 characters)
+                  </small>
+                </div>
+              )}
+
               <div style={styles.buttonGrid}>
                 <button
                   onClick={handleCreateElection}
@@ -373,12 +502,21 @@ function AdminDashboard() {
                   style={styles.actionButton}
                 >
                   <span style={styles.buttonIcon}>📋</span>
-                  <span>Create Election</span>
+                  <span>Create Fresh Election</span>
+                </button>
+                
+                <button
+                  onClick={handleResetElection}
+                  disabled={loading || !electionStatus || electionStatus.status === 'ACTIVE'}
+                  style={{...styles.actionButton, ...styles.warningButton}}
+                >
+                  <span style={styles.buttonIcon}>🔄</span>
+                  <span>Reset & Clear</span>
                 </button>
                 
                 <button
                   onClick={handleStartElection}
-                  disabled={loading || !electionStatus || electionStatus.status !== 'CREATED'}
+                  disabled={loading || !electionStatus || electionStatus.status !== 'CREATED' || candidates.length === 0}
                   style={{...styles.actionButton, ...styles.successButton}}
                 >
                   <span style={styles.buttonIcon}>🚀</span>
@@ -391,13 +529,23 @@ function AdminDashboard() {
                   style={{...styles.actionButton, ...styles.dangerButton}}
                 >
                   <span style={styles.buttonIcon}>⏹️</span>
-                  <span>Stop Election</span>
+                  <span>Stop & Finalize</span>
                 </button>
+              </div>
+
+              {/* Helper text */}
+              <div style={styles.helperText}>
+                💡 <strong>Fresh Election Process:</strong> Create → Add Candidates → Start → Vote → Stop → Results Saved
               </div>
             </div>
 
             <div style={styles.card}>
-              <h3 style={styles.cardTitle}>Add Candidate</h3>
+              <h3 style={styles.cardTitle}>Add Candidates to Current Election</h3>
+              {electionStatus?.status !== 'CREATED' && (
+                <div style={styles.warningBox}>
+                  ⚠️ Create a new election first to add candidates
+                </div>
+              )}
               <form onSubmit={handleAddCandidate} style={styles.form}>
                 <div style={styles.formRow}>
                   <div style={styles.formGroup}>
@@ -425,9 +573,16 @@ function AdminDashboard() {
                   </div>
                 </div>
                 
-                <button type="submit" disabled={loading} style={styles.submitButton}>
+                <button 
+                  type="submit" 
+                  disabled={loading || !electionStatus || electionStatus.status !== 'CREATED'} 
+                  style={{
+                    ...styles.submitButton,
+                    opacity: (!electionStatus || electionStatus.status !== 'CREATED') ? 0.5 : 1
+                  }}
+                >
                   <span style={styles.buttonIcon}>➕</span>
-                  Add Candidate
+                  Add to Current Election
                 </button>
               </form>
             </div>
@@ -451,14 +606,22 @@ function AdminDashboard() {
                 </div>
               </div>
             )}
+            </div>
+            <div style={styles.consoleColumn}>
+              <BlockchainConsole 
+                isCollapsed={consoleCollapsed} 
+                onToggle={handleConsoleToggle}
+              />
+            </div>
           </div>
         )}
 
         {/* Results Tab */}
         {activeTab === 'results' && (
-          <div>
-            {candidates.length > 0 ? (
-              <>
+          <div style={styles.twoColumnLayout}>
+            <div style={styles.mainColumn}>
+              {candidates.length > 0 ? (
+                <>
                 <div style={styles.card}>
                   <h3 style={styles.cardTitle}>Live Voting Results</h3>
                   <table style={styles.table}>
@@ -521,9 +684,168 @@ function AdminDashboard() {
                 <p>Add candidates in the Manage Election tab to see results here.</p>
               </div>
             )}
+            </div>
+            <div style={styles.consoleColumn}>
+              <BlockchainConsole 
+                isCollapsed={consoleCollapsed} 
+                onToggle={handleConsoleToggle}
+              />
+            </div>
+          </div>
+        )}
+
+        {/* Archive Section */}
+        {activeTab === 'archive' && (
+          <div style={styles.contentArea}>
+            <div style={styles.headerSection}>
+              <h2 style={styles.sectionTitle}>📚 Election Archive</h2>
+              <p style={styles.sectionDescription}>
+                View detailed statistics and results from past elections
+              </p>
+            </div>
+
+            {loading ? (
+              <div style={styles.loadingContainer}>
+                <div style={styles.spinner}></div>
+                <p>Loading archive...</p>
+              </div>
+            ) : (
+              <div style={styles.archiveContainer}>
+                {/* Election List */}
+                <div style={styles.archiveList}>
+                  <h3 style={styles.archiveListTitle}>Past Elections</h3>
+                  {archivedElections.length > 0 ? (
+                    archivedElections.map(election => (
+                      <div 
+                        key={election.id} 
+                        style={{
+                          ...styles.archiveItem,
+                          ...(selectedArchive === election.id ? styles.archiveItemActive : {})
+                        }}
+                        onClick={() => loadElectionStatistics(election.id)}
+                      >
+                        <div style={styles.archiveItemHeader}>
+                          <span style={styles.archiveItemTitle}>{election.title}</span>
+                          <span style={styles.archiveItemDate}>
+                            {new Date(election.stoppedAt).toLocaleDateString()}
+                          </span>
+                        </div>
+                        <div style={styles.archiveItemMeta}>
+                          <span>Total Votes: {election.totalVotes}</span>
+                          <span>Candidates: {election.candidates?.length || 0}</span>
+                        </div>
+                      </div>
+                    ))
+                  ) : (
+                    <div style={styles.emptyArchive}>
+                      <div style={styles.emptyIcon}>📭</div>
+                      <h3>No Archived Elections</h3>
+                      <p>Complete some elections to see them archived here.</p>
+                    </div>
+                  )}
+                </div>
+
+                {/* Election Details */}
+                {archiveStatistics && (
+                  <div style={styles.archiveDetails}>
+                    <h3 style={styles.archiveDetailsTitle}>Election Statistics</h3>
+                    
+                    {/* Election Info */}
+                    <div style={styles.electionInfoCard}>
+                      <div style={styles.infoGrid}>
+                        <div style={styles.infoItem}>
+                          <span style={styles.infoLabel}>Title:</span>
+                          <span style={styles.infoValue}>{archiveStatistics.election.title}</span>
+                        </div>
+                        <div style={styles.infoItem}>
+                          <span style={styles.infoLabel}>Duration:</span>
+                          <span style={styles.infoValue}>{archiveStatistics.duration}</span>
+                        </div>
+                        <div style={styles.infoItem}>
+                          <span style={styles.infoLabel}>Total Votes:</span>
+                          <span style={styles.infoValue}>{archiveStatistics.totalVotes}</span>
+                        </div>
+                        <div style={styles.infoItem}>
+                          <span style={styles.infoLabel}>Started:</span>
+                          <span style={styles.infoValue}>
+                            {new Date(archiveStatistics.election.startedAt).toLocaleString()}
+                          </span>
+                        </div>
+                        <div style={styles.infoItem}>
+                          <span style={styles.infoLabel}>Ended:</span>
+                          <span style={styles.infoValue}>
+                            {new Date(archiveStatistics.election.stoppedAt).toLocaleString()}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Winner Card */}
+                    {archiveStatistics.winner && (
+                      <div style={styles.winnerCardArchive}>
+                        <div style={styles.winnerBadgeArchive}>🏆 Winner</div>
+                        <div style={styles.winnerNameArchive}>{archiveStatistics.winner.name}</div>
+                        <div style={styles.winnerPartyArchive}>{archiveStatistics.winner.party}</div>
+                        <div style={styles.winnerStatsArchive}>
+                          {archiveStatistics.winner.voteCount} votes • {' '}
+                          {archiveStatistics.votePercentages?.[archiveStatistics.winner.name]?.toFixed(1) || 0}% of total
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Results Table */}
+                    <div style={styles.resultsTableContainer}>
+                      <table style={styles.resultsTable}>
+                        <thead>
+                          <tr>
+                            <th style={styles.tableHeader}>Candidate</th>
+                            <th style={styles.tableHeader}>Party</th>
+                            <th style={styles.tableHeader}>Votes</th>
+                            <th style={styles.tableHeader}>Percentage</th>
+                            <th style={styles.tableHeader}>Progress</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {archiveStatistics.candidates
+                            .sort((a, b) => b.voteCount - a.voteCount)
+                            .map((candidate, index) => {
+                              const percentage = archiveStatistics.votePercentages?.[candidate.name] || 0;
+                              return (
+                                <tr key={candidate.id}>
+                                  <td style={styles.tableCell}>{candidate.name}</td>
+                                  <td style={styles.tableCell}>{candidate.party}</td>
+                                  <td style={styles.tableCell}>{candidate.voteCount}</td>
+                                  <td style={styles.tableCell}>{percentage.toFixed(1)}%</td>
+                                  <td style={styles.tableCell}>
+                                    <div style={styles.progressContainer}>
+                                      <div style={{
+                                        ...styles.progress,
+                                        width: `${percentage}%`,
+                                        background: getColor(index)
+                                      }} />
+                                    </div>
+                                  </td>
+                                </tr>
+                              );
+                            })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         )}
       </div>
+      
+      {/* Floating Console for Overview and other tabs */}
+      {activeTab === 'overview' && (
+        <BlockchainConsole 
+          isCollapsed={consoleCollapsed} 
+          onToggle={handleConsoleToggle}
+        />
+      )}
     </div>
   );
 }
@@ -807,8 +1129,54 @@ const styles = {
   dangerButton: {
     background: 'linear-gradient(135deg, #f56565, #e53e3e)',
   },
+  warningButton: {
+    background: 'linear-gradient(135deg, #ed8936, #dd6b20)',
+  },
   buttonIcon: {
     fontSize: '20px',
+  },
+  statusInfo: {
+    background: '#f7fafc',
+    border: '1px solid #e2e8f0',
+    borderRadius: '8px',
+    padding: '16px',
+    marginBottom: '20px',
+    display: 'flex',
+    gap: '24px',
+  },
+  statusItem: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '4px',
+  },
+  statusLabel: {
+    fontSize: '12px',
+    fontWeight: '600',
+    color: '#718096',
+    textTransform: 'uppercase',
+  },
+
+  statusValue: {
+    fontSize: '16px',
+    fontWeight: '600',
+    color: '#2d3748',
+  },
+  helperText: {
+    marginTop: '16px',
+    padding: '12px',
+    background: '#edf2f7',
+    borderRadius: '8px',
+    fontSize: '13px',
+    color: '#4a5568',
+  },
+  warningBox: {
+    padding: '12px',
+    background: '#fed7d7',
+    border: '1px solid #feb2b2',
+    borderRadius: '8px',
+    fontSize: '13px',
+    color: '#c53030',
+    marginBottom: '16px',
   },
   form: {
     display: 'flex',
@@ -836,6 +1204,38 @@ const styles = {
     border: '2px solid #e2e8f0',
     borderRadius: '8px',
     outline: 'none',
+  },
+  inputSection: {
+    marginBottom: '25px',
+    padding: '20px',
+    background: '#f8fafc',
+    borderRadius: '12px',
+    border: '1px solid #e2e8f0',
+  },
+  inputLabel: {
+    display: 'block',
+    fontSize: '14px',
+    fontWeight: '600',
+    color: '#374151',
+    marginBottom: '8px',
+  },
+  inputField: {
+    width: '100%',
+    padding: '12px 16px',
+    fontSize: '15px',
+    border: '2px solid #e2e8f0',
+    borderRadius: '8px',
+    outline: 'none',
+    transition: 'border-color 0.2s',
+    backgroundColor: 'white',
+    fontFamily: 'inherit',
+  },
+  inputHint: {
+    display: 'block',
+    fontSize: '12px',
+    color: '#6b7280',
+    marginTop: '6px',
+    fontStyle: 'italic',
   },
   submitButton: {
     padding: '14px',
@@ -953,6 +1353,177 @@ const styles = {
   },
   emptyIcon: {
     fontSize: '64px',
+    marginBottom: '20px',
+  },
+  
+  // New styles for 2-column layout with console
+  twoColumnLayout: {
+    display: 'flex',
+    gap: '20px',
+    height: 'calc(100vh - 200px)',
+    minHeight: '600px',
+  },
+  
+  mainColumn: {
+    flex: '0 0 70%',
+    overflowY: 'auto',
+    paddingRight: '10px',
+  },
+  
+  consoleColumn: {
+    flex: '0 0 30%',
+    minWidth: '350px',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+
+  // Archive styles
+  archiveContainer: {
+    display: 'flex',
+    gap: '30px',
+    height: 'calc(100vh - 280px)',
+    minHeight: '500px',
+  },
+  archiveList: {
+    flex: '0 0 300px',
+    background: 'white',
+    borderRadius: '12px',
+    padding: '20px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    overflowY: 'auto',
+  },
+  archiveListTitle: {
+    fontSize: '18px',
+    fontWeight: '600',
+    color: '#2d3748',
+    marginBottom: '20px',
+    borderBottom: '2px solid #e2e8f0',
+    paddingBottom: '10px',
+  },
+  archiveItem: {
+    padding: '15px',
+    borderRadius: '8px',
+    border: '1px solid #e2e8f0',
+    marginBottom: '10px',
+    cursor: 'pointer',
+    transition: 'all 0.2s',
+    background: 'white',
+  },
+  archiveItemActive: {
+    background: '#667eea',
+    color: 'white',
+    borderColor: '#667eea',
+  },
+  archiveItemHeader: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: '8px',
+  },
+  archiveItemTitle: {
+    fontWeight: '600',
+    fontSize: '14px',
+  },
+  archiveItemDate: {
+    fontSize: '12px',
+    opacity: 0.8,
+  },
+  archiveItemMeta: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    fontSize: '12px',
+    opacity: 0.7,
+  },
+  archiveDetails: {
+    flex: 1,
+    background: 'white',
+    borderRadius: '12px',
+    padding: '20px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    overflowY: 'auto',
+  },
+  archiveDetailsTitle: {
+    fontSize: '20px',
+    fontWeight: '600',
+    color: '#2d3748',
+    marginBottom: '20px',
+  },
+  electionInfoCard: {
+    background: '#f7fafc',
+    borderRadius: '8px',
+    padding: '20px',
+    marginBottom: '20px',
+  },
+  infoGrid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: '15px',
+  },
+  infoItem: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '4px',
+  },
+  infoLabel: {
+    fontSize: '12px',
+    fontWeight: '600',
+    color: '#718096',
+    textTransform: 'uppercase',
+  },
+  infoValue: {
+    fontSize: '14px',
+    fontWeight: '500',
+    color: '#2d3748',
+  },
+  winnerCardArchive: {
+    background: 'linear-gradient(135deg, #ffd700, #ffed4e)',
+    color: '#744210',
+    borderRadius: '12px',
+    padding: '20px',
+    textAlign: 'center',
+    marginBottom: '20px',
+    boxShadow: '0 4px 12px rgba(255, 215, 0, 0.3)',
+  },
+  winnerBadgeArchive: {
+    fontSize: '14px',
+    fontWeight: '600',
+    marginBottom: '10px',
+    textTransform: 'uppercase',
+  },
+  winnerNameArchive: {
+    fontSize: '24px',
+    fontWeight: '700',
+    marginBottom: '8px',
+  },
+  winnerPartyArchive: {
+    fontSize: '16px',
+    opacity: 0.9,
+    marginBottom: '12px',
+  },
+  winnerStatsArchive: {
+    fontSize: '14px',
+    opacity: 0.8,
+  },
+  emptyArchive: {
+    textAlign: 'center',
+    padding: '40px 20px',
+    color: '#718096',
+  },
+  loadingContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '300px',
+    color: '#718096',
+  },
+  spinner: {
+    border: '4px solid #f3f4f6',
+    borderTop: '4px solid #667eea',
+    borderRadius: '50%',
+    width: '40px',
+    height: '40px',
+    animation: 'spin 1s linear infinite',
     marginBottom: '20px',
   },
 };

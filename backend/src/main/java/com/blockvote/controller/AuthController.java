@@ -3,6 +3,7 @@ package com.blockvote.controller;
 import com.blockvote.dto.*;
 import com.blockvote.entity.User;
 import com.blockvote.service.AuthService;
+import com.blockvote.service.BlockchainConsoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private final AuthService authService;
+    private final BlockchainConsoleService consoleService;
 
     @PostMapping("/login")
     public ResponseEntity<ApiResponse> login(@RequestBody LoginRequest request) {
@@ -78,6 +80,12 @@ public class AuthController {
                     + (request.getSignature() != null ? request.getSignature().substring(0, 20) + "..." : "null"));
 
             User user = authService.verifyAndBindWallet(request);
+
+            // Broadcast admin wallet connection to console if user is admin
+            if ("ADMIN".equals(user.getRole())) {
+                consoleService.broadcastWalletConnection(request.getWalletAddress());
+            }
+
             return ResponseEntity.ok(new ApiResponse(
                     true,
                     "Wallet verified and bound successfully! You can now vote.",

@@ -29,4 +29,10 @@ public class Vote {
 
     @Column(nullable = false)
     private String walletAddress;
+
+    @Column(name = "transaction_hash")
+    private String transactionHash;
+
+    @Column(name = "block_number")
+    private Long blockNumber;
 }

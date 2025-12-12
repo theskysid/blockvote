@@ -7,8 +7,6 @@ function Login() {
   const [otp, setOtp] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const [otpVerified, setOtpVerified] = useState(false);
-  const [userRole, setUserRole] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -17,20 +15,20 @@ function Login() {
     setLoading(true);
 
     try {
+      console.log('Attempting login...', { mobileNumber, otp });
       const response = await authAPI.login(mobileNumber, otp);
+      console.log('Login response:', response.data);
       
       if (response.data.success) {
         const userData = response.data.data;
+        console.log('Login successful, userData:', userData);
         
         // Store user data temporarily
         localStorage.setItem('user', JSON.stringify(userData));
         sessionStorage.setItem('mobileNumber', mobileNumber);
         
-        // OTP verified - now proceed to wallet verification
-        setOtpVerified(true);
-        setUserRole(userData.role);
-        
         // Navigate to wallet connect page
+        console.log('Navigating to wallet-connect...');
         navigate('/wallet-connect', {
           state: {
             mobileNumber: mobileNumber,
@@ -38,10 +36,26 @@ function Login() {
           }
         });
       } else {
+        console.log('Login failed:', response.data.message);
         setError(response.data.message);
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed. Please try again.');
+      const errorMessage = err.response?.data?.message || 'Login failed. Please try again.';
+      console.log('Login error:', errorMessage);
+      
+      // Check if this is a wallet-verification error
+      if (errorMessage.includes('wallet-verified') || errorMessage.includes('connect your wallet')) {
+        // Redirect to wallet connect with error context
+        navigate('/wallet-connect', {
+          state: {
+            mobileNumber: mobileNumber,
+            error: errorMessage,
+            requiresWallet: true
+          }
+        });
+      } else {
+        setError(errorMessage);
+      }
     } finally {
       setLoading(false);
     }

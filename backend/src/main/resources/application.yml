@@ -24,4 +24,13 @@ server:
 # CORS Configuration
 cors:
   allowed-origins: http://localhost:3000,http://localhost:3001
+
+# Blockchain Configuration
+blockchain:
+  rpc-url: http://127.0.0.1:8545
+  chain-id: 31337
+  max-block-range: 1000
+  polling-interval: 5000
+  enabled: true
+  contract-deployment-path: ../blockchain
     <div>

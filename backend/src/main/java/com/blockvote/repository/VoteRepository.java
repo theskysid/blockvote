@@ -11,4 +11,9 @@ public interface VoteRepository extends JpaRepository<Vote, Long> {
     Optional<Vote> findByVoterMobile(String voterMobile);
 
     boolean existsByVoterMobile(String voterMobile);
+
+    // Blockchain-related queries
+    boolean existsByWalletAddressAndTransactionHash(String walletAddress, String transactionHash);
+
+    Optional<Vote> findByTransactionHash(String transactionHash);
 }

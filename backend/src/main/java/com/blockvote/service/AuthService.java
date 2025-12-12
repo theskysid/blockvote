@@ -31,11 +31,13 @@ public class AuthService {
         User user = userRepository.findByMobileNumber(request.getMobileNumber())
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        // SECURITY CHECK: If user has a registered wallet, validate they're logging in with that wallet
+        // SECURITY CHECK: If user has a registered wallet, validate they're logging in
+        // with that wallet
         if (user.isWalletVerified() && user.getRegisteredWalletAddress() != null) {
             // Wallet address should be provided in the request for wallet-verified users
             if (request.getWalletAddress() == null || request.getWalletAddress().trim().isEmpty()) {
-                throw new RuntimeException("Wallet address is required for wallet-verified accounts");
+                throw new RuntimeException("This account is wallet-verified. Please connect your wallet (" +
+                        user.getRegisteredWalletAddress().substring(0, 8) + "...) to proceed with login.");
             }
 
             // Normalize addresses for comparison (case-insensitive)
@@ -44,8 +46,7 @@ public class AuthService {
 
             if (!normalizedRegistered.equals(normalizedProvided)) {
                 throw new RuntimeException(
-                    "Wallet address mismatch! You must login with your registered wallet address: "
-                    + user.getRegisteredWalletAddress());
+                        "Wallet address mismatch! You must login with your registered wallet address.");
             }
         }
 

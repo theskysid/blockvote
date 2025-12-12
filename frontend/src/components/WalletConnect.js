@@ -1,46 +1,87 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { authAPI } from '../api';
 
 const WalletConnect = ({ mobileNumber, userRole, onSuccess }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [status, setStatus] = useState('idle'); // idle, connecting, signing, verifying, success, error
   const [message, setMessage] = useState('');
   const [walletAddress, setWalletAddress] = useState('');
   const [error, setError] = useState('');
-  const [challengeData, setChallengeData] = useState(null);
   const [hasMetaMask, setHasMetaMask] = useState(false);
+  
+  // Get data from login redirect
+  const locationMobileNumber = location.state?.mobileNumber || mobileNumber;
+  const locationUserRole = location.state?.userRole || userRole;
+  const requiresWallet = location.state?.requiresWallet || false;
+  const loginError = location.state?.error;
 
-  useEffect(() => {
-    // Check if MetaMask is installed
-    if (typeof window.ethereum !== 'undefined') {
-      setHasMetaMask(true);
-      checkExistingWallet();
+  const proceedToDashboard = useCallback(() => {
+    const role = locationUserRole || userRole;
+    if (role === 'ADMIN') {
+      navigate('/admin');
     } else {
-      setHasMetaMask(false);
-      setError('MetaMask is not installed. Please install MetaMask extension to continue.');
+      navigate('/voter');
     }
-  }, []);
+  }, [locationUserRole, userRole, navigate]);
 
-  const checkExistingWallet = async () => {
+  const checkExistingWallet = useCallback(async () => {
     try {
       // Check if wallet is already registered
-      const response = await authAPI.initWalletChallenge(mobileNumber);
+      const mobile = locationMobileNumber || mobileNumber;
+      const response = await authAPI.initWalletChallenge(mobile);
       const data = response.data.data; // ApiResponse wraps data
       if (data.alreadyRegistered) {
         setWalletAddress(data.registeredWallet);
         setMessage(`Wallet already registered: ${data.registeredWallet}`);
         setStatus('success');
         
-        // Auto-proceed to dashboard after 2 seconds
-        setTimeout(() => {
-          proceedToDashboard();
-        }, 2000);
+        // If user came from login with wallet requirement, complete the login now
+        if (requiresWallet && loginError) {
+          try {
+            const loginResponse = await authAPI.login(mobile, '123456', data.registeredWallet);
+            if (loginResponse.data.success) {
+              const userData = loginResponse.data.data;
+              localStorage.setItem('user', JSON.stringify(userData));
+              sessionStorage.setItem('mobileNumber', mobile);
+              setTimeout(() => {
+                proceedToDashboard();
+              }, 2000);
+            } else {
+              setError('Login failed: ' + loginResponse.data.message);
+            }
+          } catch (loginErr) {
+            setError('Login failed: ' + (loginErr.response?.data?.message || 'Unknown error'));
+          }
+        } else {
+          // Auto-proceed to dashboard after 2 seconds
+          setTimeout(() => {
+            proceedToDashboard();
+          }, 2000);
+        }
       }
     } catch (err) {
       console.error('Error checking wallet status:', err);
     }
-  };
+  }, [locationMobileNumber, mobileNumber, proceedToDashboard, requiresWallet, loginError]);
+
+  useEffect(() => {
+    // Show login error if redirected due to wallet verification requirement
+    if (loginError && requiresWallet) {
+      setError(loginError);
+      setMessage('Please connect your registered wallet to continue with login.');
+    }
+    
+    // Check if MetaMask is installed
+    if (typeof window.ethereum !== 'undefined') {
+      setHasMetaMask(true);
+      setMessage('Ready to connect. Click the button below to connect your MetaMask wallet.');
+    } else {
+      setHasMetaMask(false);
+      setError('MetaMask is not installed. Please install MetaMask extension to continue.');
+    }
+  }, [loginError, requiresWallet]);
 
   const connectWallet = async () => {
     if (!hasMetaMask) {
@@ -51,12 +92,16 @@ const WalletConnect = ({ mobileNumber, userRole, onSuccess }) => {
     try {
       setStatus('connecting');
       setError('');
-      setMessage('Connecting to MetaMask...');
+      setMessage('Opening MetaMask... Please approve the connection request.');
 
-      // Request account access
+      // Request account access - This will open MetaMask popup
       const accounts = await window.ethereum.request({
         method: 'eth_requestAccounts'
       });
+
+      if (!accounts || accounts.length === 0) {
+        throw new Error('No accounts found. Please unlock MetaMask and try again.');
+      }
 
       const account = accounts[0];
       setWalletAddress(account);
@@ -64,35 +109,56 @@ const WalletConnect = ({ mobileNumber, userRole, onSuccess }) => {
 
       // Get challenge message from backend
       setStatus('fetching-challenge');
-      setMessage('Fetching challenge from server...');
+      setMessage('Checking wallet registration status...');
       
-      const challengeResponse = await authAPI.initWalletChallenge(mobileNumber);
+      const mobile = locationMobileNumber || mobileNumber;
+      const challengeResponse = await authAPI.initWalletChallenge(mobile);
       const challengeData = challengeResponse.data.data; // ApiResponse wraps data
       
       if (challengeData.alreadyRegistered) {
-        // Wallet already registered
+        // Wallet already registered - verify it matches
         if (challengeData.registeredWallet.toLowerCase() === account.toLowerCase()) {
           setStatus('success');
-          setMessage('Wallet already verified! Proceeding...');
-          setTimeout(() => proceedToDashboard(), 1500);
+          setMessage('✅ Wallet verified! This wallet is registered to your account.');
+          
+          // Store wallet verification status
+          sessionStorage.setItem('walletVerified', 'true');
+          sessionStorage.setItem('walletAddress', account);
+          
+          // If user came from login with wallet requirement, complete the login now
+          if (requiresWallet && loginError) {
+            try {
+              const loginResponse = await authAPI.login(mobile, '123456', account);
+              if (loginResponse.data.success) {
+                const userData = loginResponse.data.data;
+                localStorage.setItem('user', JSON.stringify(userData));
+                sessionStorage.setItem('mobileNumber', mobile);
+                setMessage('✅ Login successful! Redirecting to dashboard...');
+                setTimeout(() => proceedToDashboard(), 1500);
+              } else {
+                setError('Login failed: ' + loginResponse.data.message);
+              }
+            } catch (loginErr) {
+              setError('Login failed: ' + (loginErr.response?.data?.message || 'Unknown error'));
+            }
+          } else {
+            setMessage('✅ Wallet verified! Redirecting to dashboard...');
+            setTimeout(() => proceedToDashboard(), 1500);
+          }
         } else {
           setStatus('error');
           setError(
-            `Wallet mismatch! This mobile number is linked to: ${challengeData.registeredWallet}. ` +
-            `You connected: ${account}. You cannot change your registered wallet.`
+            `❌ Wallet mismatch! This mobile number is linked to: ${challengeData.registeredWallet}. ` +
+            `You connected: ${account}. Please connect the correct wallet or contact support.`
           );
         }
         return;
       }
 
       console.log('Challenge received:', challengeData);
+      setMessage('New wallet detected. Please sign the verification message...');
 
-      setChallengeData({
-        message: challengeData.message,
-        nonce: challengeData.nonce
-      });
-
-      // Request signature
+      // Request signature for new wallet registration
       await requestSignature(account, challengeData.message, challengeData.nonce);
 
     } catch (err) {
@@ -100,11 +166,13 @@ const WalletConnect = ({ mobileNumber, userRole, onSuccess }) => {
       setStatus('error');
       
       if (err.code === 4001) {
-        setError('Connection rejected. Please approve the MetaMask connection request.');
+        setError('❌ Connection rejected. Please approve the MetaMask connection request to continue.');
+      } else if (err.code === -32002) {
+        setError('❌ MetaMask is already processing a request. Please check your MetaMask extension.');
       } else if (err.message) {
-        setError(err.message);
+        setError(`❌ ${err.message}`);
       } else {
-        setError('Failed to connect wallet. Please try again.');
+        setError('❌ Failed to connect wallet. Please try again.');
       }
     }
   };
@@ -155,6 +223,7 @@ const WalletConnect = ({ mobileNumber, userRole, onSuccess }) => {
         nonce: nonce
       });
 
+      console.log('Verification response:', response.data);
       setStatus('success');
       setMessage('✅ Wallet verified successfully! Redirecting...');
 
@@ -176,14 +245,6 @@ const WalletConnect = ({ mobileNumber, userRole, onSuccess }) => {
       console.error('Error verifying signature:', err);
       setStatus('error');
       setError(err.response?.data?.message || 'Failed to verify wallet. Please try again.');
-    }
-  };
-
-  const proceedToDashboard = () => {
-    if (userRole === 'ADMIN') {
-      navigate('/admin');
-    } else {
-      navigate('/voter');
     }
   };
 

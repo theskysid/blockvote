@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { voterAPI } from '../api';
+import BlockchainActivityFeed from './BlockchainActivityFeed';
 
 function VoterDashboard() {
   const [user, setUser] = useState(null);
@@ -9,6 +10,17 @@ function VoterDashboard() {
   const [message, setMessage] = useState({ type: '', text: '' });
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  const loadCandidates = useCallback(async () => {
+    try {
+      const response = await voterAPI.getCandidates();
+      if (response.data.success) {
+        setCandidates(response.data.data);
+      }
+    } catch (err) {
+      showMessage('error', 'Failed to load candidates');
+    }
+  }, []);
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
@@ -19,18 +31,7 @@ function VoterDashboard() {
     setUser(userData);
     setHasVoted(userData.hasVoted);
     loadCandidates();
-  }, [navigate]);
-
-  const loadCandidates = async () => {
-    try {
-      const response = await voterAPI.getCandidates();
-      if (response.data.success) {
-        setCandidates(response.data.data);
-      }
-    } catch (err) {
-      showMessage('error', 'Failed to load candidates');
-    }
-  };
+  }, [navigate, loadCandidates]);
 
   const showMessage = (type, text) => {
     setMessage({ type, text });
@@ -208,6 +209,9 @@ function VoterDashboard() {
           <li>Voting is only allowed when the election is active</li>
         </ul>
       </div>
+
+      {/* Real-time blockchain vote activity feed */}
+      <BlockchainActivityFeed />
     </div>
   );
 }

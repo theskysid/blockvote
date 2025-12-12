@@ -14,23 +14,29 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Clear existing users (for fresh start in dev mode)
-        userRepository.deleteAll();
+        // Only initialize if admin doesn't exist (preserve existing users)
+        if (userRepository.findByMobileNumber("9999999999").isEmpty()) {
+            // Create Admin User only
+            User admin = new User();
+            admin.setMobileNumber("9999999999");
+            admin.setRole("ADMIN");
+            admin.setWalletAddress(null); // Will be set manually in database
+            admin.setRegisteredWalletAddress(null); // Will be set manually in database
+            admin.setWalletVerified(false); // Will be set manually in database
+            admin.setHasVoted(false);
+            userRepository.save(admin);
+            
+            System.out.println("========================================");
+            System.out.println("Admin user created:");
+            System.out.println("Admin - Mobile: 9999999999, OTP: 123456");
+            System.out.println("========================================");
+        } else {
+            System.out.println("========================================");
+            System.out.println("System ready - existing users preserved");
+            System.out.println("Admin - Mobile: 9999999999, OTP: 123456");
+            System.out.println("========================================");
+        }
 
-        // Create Admin User only
-        User admin = new User();
-        admin.setMobileNumber("9999999999");
-        admin.setRole("ADMIN");
-        admin.setWalletAddress(null); // Will be set after MetaMask connection
-        admin.setRegisteredWalletAddress(null);
-        admin.setWalletVerified(false); // Must verify via MetaMask
-        admin.setHasVoted(false);
-        userRepository.save(admin);
-
-        System.out.println("========================================");
-        System.out.println("System Initialized:");
-        System.out.println("Admin - Mobile: 9999999999, OTP: 123456");
         System.out.println("Voters can register using /register page");
-        System.out.println("========================================");
     }
 }
